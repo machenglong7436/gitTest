@@ -1663,6 +1663,7 @@
 
 							<div>
 								<table   id="tableId"
+
 										 data-show-columns="true"
 										 data-search="true"
 										 data-show-refresh="true"
@@ -1884,9 +1885,6 @@
 			oTableInit.Init = function (data) {
 				$('#tableId').bootstrapTable({
 					url: '/Home/GetDepartment',         //请求后台的URL（*）
-//					data: [],
-//                    dataType: json,
-
 					method: 'post',                      //请求方式（*）
 					toolbar: '#toolbar',                //工具按钮用哪个容器
 					striped: true,                      //是否显示行间隔色
@@ -1910,24 +1908,13 @@
 					showToggle:true,                    //是否显示详细视图和列表视图的切换按钮
 					cardView: false,                    //是否显示详细视图
 					detailView: false,                   //是否显示父子表
-                    responseHandler:function (res) {
-//					    res.DATA = JSON.parse(res.DATA)
-                        var json = res.text;
-//                        alert(json);
-                        var body = JSON.parse(json);
-                        var obj = JSON.stringify(body);
-                        var jsonObj = JSON.parse(obj);
-                        var val = jsonObj.body.value.total;
-//					   alert(res.DATA.toString());
-                        return val;
-                    },
 					columns: [{
 						checkbox: true
 					}, {
 						field: 'name',
 						title: '部门名称'
 					}, {
-						field: 'parentname',
+						field: 'parentName',
 						title: '上级部门'
 					}, {
 						field: 'grade',

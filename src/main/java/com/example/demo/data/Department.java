@@ -13,7 +13,7 @@ import javax.persistence.Table;
 )
 public class Department {
     private String name;
-    private String ParentName;
+    private String parentName;
     private String grade;
     private String message;
 
@@ -26,11 +26,11 @@ public class Department {
     }
 
     public String getParentName() {
-        return ParentName;
+        return parentName;
     }
 
     public void setParentName(String parentName) {
-        ParentName = parentName;
+        this.parentName = parentName;
     }
 
     public String getGrade() {

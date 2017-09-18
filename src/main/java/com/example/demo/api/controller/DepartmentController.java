@@ -3,6 +3,7 @@ package com.example.demo.api.controller;
 import com.example.demo.dao.DepartmentDao;
 import com.example.demo.data.Department;
 import com.example.demo.data.QueryParam;
+import com.example.demo.service.DepartmentService;
 import jdk.nashorn.internal.parser.JSONParser;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,19 +24,12 @@ import java.util.Map;
 @RestController
 public class DepartmentController {
     @Autowired
-    DepartmentDao departmentDao;
+    DepartmentService departmentService;
 
     @RequestMapping(value = "Home/GetDepartment",method = RequestMethod.POST)
     @ResponseBody
-    public Object getDepartmet(@RequestBody QueryParam param){
-        HashMap resultMap = new HashMap();
-        resultMap.put("name","hello");
-        resultMap.put("grade",3);
-        resultMap.put("parentname","parentName");
-        resultMap.put("message","message");
-
-        resultMap.put("body", departmentDao.selectDepartmentBypage(param.getLimit(),param.getOffset()));
-        return resultMap;
+    public Map<String, Object> getDepartmet(@RequestBody QueryParam param){
+        return departmentService.selectByPage(param.getLimit(),param.getOffset());
     }
 
 //    @RequestMapping(value = "Home/GetDepartment",method = RequestMethod.POST)
